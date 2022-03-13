@@ -1,0 +1,22 @@
+{
+  "name": "algorithms-and-data-structures",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/milospav7/algorithms-and-data-structures.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/milospav7/algorithms-and-data-structures/issues"
+  },
+  "homepage": "https://github.com/milospav7/algorithms-and-data-structures#readme",
+  "devDependencies": {
+    "typescript": "^4.6.2"
+  }
+}
