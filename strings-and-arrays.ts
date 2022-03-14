@@ -61,10 +61,11 @@ function arrayToChunks(arr: any[], chunkSize: number) {
   do {
     chunks.push(arr.slice(chunkStartIndex, chunkStartIndex + chunkSize));
     chunkStartIndex += chunkSize;
-  } while (chunkStartIndex <= arr.length);
+  } while (chunkStartIndex < arr.length);
 
   return chunks;
 }
 
 console.log(arrayToChunks([1, 2, 3, 4], 4));
+console.log(arrayToChunks([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 5));
 console.log(arrayToChunks([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3));
