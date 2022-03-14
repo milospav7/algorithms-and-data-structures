@@ -50,3 +50,21 @@ function getMaxChar(str: string) {
 
 console.log(getMaxChar("Jedan"));
 console.log(getMaxChar("Annannnass"));
+
+// 5. Chunk array in "n" chunks
+function arrayToChunks(arr: any[], chunkSize: number) {
+  if (arr.length <= chunkSize) return arr;
+
+  let chunks = [];
+  let chunkStartIndex = 0;
+
+  do {
+    chunks.push(arr.slice(chunkStartIndex, chunkStartIndex + chunkSize));
+    chunkStartIndex += chunkSize;
+  } while (chunkStartIndex <= arr.length);
+
+  return chunks;
+}
+
+console.log(arrayToChunks([1, 2, 3, 4], 4));
+console.log(arrayToChunks([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3));
