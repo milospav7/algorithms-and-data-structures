@@ -18,7 +18,7 @@ console.log(isPalindrome("Hannah"));
 
 // 3. Reverse an integer
 function reverseInteger(int: number) {
-  if (int < 10) return int;
+  if (Math.abs(int) < 10) return int;
   const reversed = int.toString().split("").reverse().join("");
   return Math.sign(int) * Number(reversed);
 }
