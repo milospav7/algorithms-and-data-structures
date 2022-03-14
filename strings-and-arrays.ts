@@ -25,3 +25,28 @@ function reverseInteger(int: number) {
 
 console.log(reverseInteger(2));
 console.log(reverseInteger(123));
+
+// 4. Find letter with maximum occurance in string
+function getMaxChar(str: string) {
+  if (str.length === 0 || str.trim().length === 0) return str;
+
+  const splittedString = str.split("");
+  let charsCounter = {};
+  let maxChar = "";
+  let maxCount = 0;
+
+  splittedString.forEach((char) => {
+    const count = char in charsCounter ? ++charsCounter[char] : 1;
+    charsCounter[char] = count;
+
+    if (count > maxCount) {
+      maxChar = char;
+      maxCount = count;
+    }
+  });
+
+  return maxChar;
+}
+
+console.log(getMaxChar("Jedan"));
+console.log(getMaxChar("Annannnass"));
