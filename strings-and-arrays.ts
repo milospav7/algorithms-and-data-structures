@@ -85,3 +85,29 @@ function areAnagrams(str1: string, str2: string) {
 console.log(areAnagrams("angel", "glean"));
 console.log(areAnagrams("mixa", "wixa"));
 console.log(areAnagrams("night", "thing"));
+
+// 7. Capitalize first letter of each word in sentence
+function capitalizeWords(str: string) {
+  if (str.length === 0 || str.trim().length === 0) return str;
+
+  const splitted = str.split("");
+  const capitalized = splitted.map((char, ind) => {
+    if (ind === 0) return char.toUpperCase();
+    if (splitted[ind - 1] === " ") return char.toUpperCase();
+    return char;
+  });
+
+  return capitalized.join("");
+
+  // 2nd way
+  let words = [];
+  const splittedByWhiteSpace = str.split("");
+
+  for (let word of splittedByWhiteSpace) {
+    words.push(word[0].toUpperCase() + word.slice(1));
+  }
+
+  return words.join(" ");
+}
+
+console.log(capitalizeWords("winter is coming"));
