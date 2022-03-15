@@ -127,3 +127,22 @@ function printSteps(n: number) {
 printSteps(2);
 printSteps(3);
 printSteps(4);
+
+// 9. Print "n" steps using recursion
+function printStepsRecursively(n: number, step = "", row = 0) {
+  if (row === n) {
+    return;
+  }
+
+  if (step.length === n) {
+    console.log(step);
+    return printStepsRecursively(n, "", row + 1);
+  }
+
+  let part = step.length <= row ? "#" : " ";
+  printStepsRecursively(n, step + part, row);
+}
+
+printStepsRecursively(2);
+printStepsRecursively(3);
+printStepsRecursively(4);
