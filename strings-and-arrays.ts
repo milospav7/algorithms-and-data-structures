@@ -111,3 +111,19 @@ function capitalizeWords(str: string) {
 }
 
 console.log(capitalizeWords("winter is coming"));
+
+// 8. Print "n" steps
+function printSteps(n: number) {
+  for (let i = 0; i < n; i++) {
+    let step = "";
+    for (let j = 0; j < n; j++) {
+      const part = j <= i ? "#" : " ";
+      step += part;
+    }
+    console.log(step);
+  }
+}
+
+printSteps(2);
+printSteps(3);
+printSteps(4);
