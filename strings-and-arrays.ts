@@ -69,3 +69,19 @@ function arrayToChunks(arr: any[], chunkSize: number) {
 console.log(arrayToChunks([1, 2, 3, 4], 4));
 console.log(arrayToChunks([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 5));
 console.log(arrayToChunks([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3));
+
+// 6. Check whether two strings are anagrams
+function cleanString(str: string) {
+  return str.replace(/[^\w]/g, "").toLowerCase().split("").sort().join();
+}
+
+function areAnagrams(str1: string, str2: string) {
+  if (str1.length === 0 || str1.trim().length === 0) return false;
+  if (str2.length === 0 || str2.trim().length === 0) return false;
+
+  return cleanString(str1) === cleanString(str2);
+}
+
+console.log(areAnagrams("angel", "glean"));
+console.log(areAnagrams("mixa", "wixa"));
+console.log(areAnagrams("night", "thing"));
