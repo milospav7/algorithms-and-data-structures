@@ -130,10 +130,12 @@ printSteps(4);
 
 // 9. Print "n" steps using recursion
 function printStepsRecursively(n: number, step = "", row = 0) {
+  // Check the base case to stop execution
   if (row === n) {
     return;
   }
 
+  // General cases
   if (step.length === n) {
     console.log(step);
     return printStepsRecursively(n, "", row + 1);
