@@ -148,3 +148,25 @@ function printStepsRecursively(n: number, step = "", row = 0) {
 printStepsRecursively(2);
 printStepsRecursively(3);
 printStepsRecursively(4);
+
+// 10. Print "n" levels pyramid
+function printPyramid(n: number) {
+  if (n > 0) {
+    for (let i = 0; i < n; i++) {
+      let level = "";
+      for (let j = 0; j < 2 * n - 1; j++) {
+        let part = j >= n - 1 - i && j <= n - 1 + i ? "#" : " ";
+        level += part;
+      }
+      console.log(level);
+    }
+  }
+}
+// 0123456
+// xxx#xxx 0
+// xx###xx 1
+// x#####x 2
+// ####### 3
+printPyramid(1);
+printPyramid(3);
+printPyramid(5);
