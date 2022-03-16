@@ -170,3 +170,23 @@ function printPyramid(n: number) {
 printPyramid(1);
 printPyramid(3);
 printPyramid(5);
+
+// 11. Count string vowels
+function countVowels(str: string) {
+  if (str.length === 0 || str.trim().length === 0) return str;
+
+  let counter = 0;
+  const vowels = ["a", "e", "i", "o", "u"];
+  str.split("").forEach((char) => {
+    if (vowels.includes(char)) counter += 1;
+  });
+
+  console.log(counter);
+
+  // Second way
+  const matches = str.match(/[aeiou]/gi) ?? [];
+  console.log(matches.length);
+}
+
+countVowels("Dejan");
+countVowels("Milija");
