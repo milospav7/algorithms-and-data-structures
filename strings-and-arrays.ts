@@ -193,25 +193,38 @@ countVowels("Milija");
 
 // 12. Fibbonaci - resolve nth element in itterative way - [0,1,1,2,3,5,8,13...]
 function fibbonaciIterattive(n: number) {
-  if (n <= 2) return n;
-  let fib = [0, 1, 1];
+  if (n <= 2) {
+    console.log(n);
+  } else {
+    // 1st way
+    let fib = [0, 1, 1];
+    for (let i = 3; i <= n; i++) {
+      fib.push(fib[i - 1] + fib[i - 2]);
+    }
 
-  for (let i = 3; i <= n; i++) {
-    fib.push(fib[i - 1] + fib[i - 2]);
+    console.log(fib[fib.length - 1]);
+
+    // 2nd way - more memory space efficient
+    let first = 1;
+    let second = 1;
+
+    for (let i = 3; i < n; i++) {
+      let temp = first;
+      first = second;
+      second = temp + second;
+    }
+    console.log(first + second);
   }
-
-  // console.log(fib[fib.length - 1]);
-
-  let first = 1;
-  let second = 1;
-
-  for (let i = 3; i < n; i++) {
-    let temp = first;
-    first = second;
-    second = temp + second;
-  }
-  console.log(first + second);
 }
 
 fibbonaciIterattive(3);
 fibbonaciIterattive(7);
+
+// 13. Fibbonaci wih recursion
+function recursiveFibb(n: number) {
+  if (n <= 1) return n;
+  return recursiveFibb(n - 1) + recursiveFibb(n - 2);
+}
+
+console.log(recursiveFibb(3));
+console.log(recursiveFibb(7));
