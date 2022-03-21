@@ -260,3 +260,22 @@ function getFactorial(n: number) {
 }
 
 console.log(getFactorial(6));
+
+// 16. Check if number is prime number - 2,3,5,7,11 etc..
+function isPrime(n: number) {
+  if (n < 2) return false;
+
+  const numSqrt = Math.ceil(Math.sqrt(n));
+
+  for (let i = 2; i <= numSqrt; i++) {
+    if (n % i === 0) return false;
+  }
+
+  return true;
+}
+
+console.log(isPrime(11));
+console.log(isPrime(97));
+console.log(isPrime(499));
+console.log(isPrime(12));
+console.log(isPrime(22));
