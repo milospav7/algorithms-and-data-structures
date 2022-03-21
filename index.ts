@@ -265,9 +265,9 @@ console.log(getFactorial(6));
 function isPrime(n: number) {
   if (n < 2) return false;
 
-  const numSqrt = Math.ceil(Math.sqrt(n));
+  const numSqrt = Math.floor(Math.sqrt(n));
 
-  for (let i = 2; i <= numSqrt; i++) {
+  for (let i = 2; i < numSqrt; i++) {
     if (n % i === 0) return false;
   }
 
