@@ -228,3 +228,27 @@ function recursiveFibb(n: number) {
 
 console.log(recursiveFibb(3));
 console.log(recursiveFibb(7));
+
+// 14. Memory efficent recursive fibbonaci
+function slowFibbonaci(n: number) {
+  if (n <= 1) return n;
+  return slowFibbonaci(n - 1) + slowFibbonaci(n - 2);
+}
+
+function memoizedFibbonaci(slow: Function) {
+  let results = {};
+  return (...args) => {
+    const input = args[0];
+    if (input in results) return results[input];
+
+    const result = slow(input);
+    results[input] = result;
+
+    return result;
+  };
+}
+
+const optimizedFibb = memoizedFibbonaci(slowFibbonaci);
+
+console.log(optimizedFibb(6));
+console.log(optimizedFibb(7));
