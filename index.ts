@@ -237,7 +237,7 @@ function slowFibbonaci(n: number) {
 
 function memoizedFibbonaci(slow: Function) {
   let results = {};
-  return (...args) => {
+  return (...args: number[]) => {
     const input = args[0];
     if (input in results) return results[input];
 
@@ -252,3 +252,11 @@ const optimizedFibb = memoizedFibbonaci(slowFibbonaci);
 
 console.log(optimizedFibb(6));
 console.log(optimizedFibb(7));
+
+// 15. Factorial with recursion - 5 => 5*4*3*2*1=120
+function getFactorial(n: number) {
+  if (n === 1) return 1;
+  return n * getFactorial(n - 1);
+}
+
+console.log(getFactorial(6));
