@@ -279,3 +279,26 @@ console.log(isPrime(97));
 console.log(isPrime(499));
 console.log(isPrime(12));
 console.log(isPrime(22));
+
+// 17. Find two largest numbers in array
+function getTwoLargest(list: number[]) {
+  if (list.length <= 2) return list;
+
+  let first = list[0];
+  let second = list[1];
+
+  for (let i = 0; i < list.length; i++) {
+    const current = list[i];
+    if (current > first) {
+      let temp = first;
+      first = current;
+      second = temp;
+    } else if (current > second) {
+      second = current;
+    }
+  }
+
+  return [first, second];
+}
+
+console.log(getTwoLargest([1, 7, 32, 3, 4, 4, 4, 34, 12, 3, 78]));
