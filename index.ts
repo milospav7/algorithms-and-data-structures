@@ -309,7 +309,7 @@ console.log(getTwoLargest([1, 7, 32, 3, 4, 4, 4, 34, 12, 3, 78]));
  * Similar to arrays but with limited operations - we can only work with first or last element in data structure
  * Can be implemented either with array or with linked list as internal data structure
  * Operations: enqueue(add), dequeue(remove), peek(get first element), lookup(not often used - O(n))
- * Using linked list as internal data structure is bad idea because with dequeue we need to remove first element from the array, and with array it means we need to shift whole array in order to remove first one, leading us to O(n) operation
+ * Using array as internal data structure is bad idea because with dequeue we need to remove first element from the array, and with array it means we need to shift whole array in order to remove first one, leading us to O(n) operation
  */
 
 class LNQueueNode {
