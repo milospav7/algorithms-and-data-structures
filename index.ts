@@ -302,3 +302,75 @@ function getTwoLargest(list: number[]) {
 }
 
 console.log(getTwoLargest([1, 7, 32, 3, 4, 4, 4, 34, 12, 3, 78]));
+
+// 18. Queue - FIFO principle;
+/**
+ * Linear data structure - allowing to traverse sequentilly(accessing one by one element)
+ * Similar to arrays but with limited operations - we can only work with first or last element in data structure
+ * Can be implemented either with array or with linked list as internal data structure
+ * Operations: enqueue(add), dequeue(remove), peek(get first element), lookup(not often used - O(n))
+ * Using linked list as internal data structure is bad idea because with dequeue we need to remove first element from the array, and with array it means we need to shift whole array in order to remove first one, leading us to O(n) operation
+ */
+
+class LNQueueNode {
+  data: any;
+  next: LNQueueNode;
+
+  constructor(data: any, next = null) {
+    this.data = data;
+    this.next = next;
+  }
+}
+
+class LNQueue {
+  first: LNQueueNode;
+  last: LNQueueNode;
+  size: number;
+
+  constructor() {
+    this.first = null;
+    this.last = null;
+    this.size = 0;
+  }
+
+  peek() {
+    return this.first;
+  }
+
+  enqueue(data: any) {
+    if (this.size === 0) {
+      const node = new LNQueueNode(data);
+      this.first = node;
+      this.last = node;
+    } else {
+      const node = new LNQueueNode(data);
+      this.last.next = node;
+      this.last = node;
+    }
+    this.size++;
+    return this;
+  }
+
+  dequeue() {
+    if (this.size > 0) {
+      if (this.first === this.last) {
+        this.last = null;
+        this.size--;
+        return this;
+      }
+
+      this.first = this.first.next;
+      this.size--;
+      return this;
+    }
+  }
+}
+
+const queue = new LNQueue();
+queue.enqueue(1);
+queue.enqueue(2);
+queue.enqueue(3);
+console.log("After enqueue", queue);
+queue.dequeue();
+queue.dequeue();
+console.log("After dequeue", queue);
