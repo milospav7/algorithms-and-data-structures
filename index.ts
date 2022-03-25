@@ -366,11 +366,42 @@ class LNQueue {
   }
 }
 
-const queue = new LNQueue();
-queue.enqueue(1);
-queue.enqueue(2);
-queue.enqueue(3);
-console.log("After enqueue", queue);
-queue.dequeue();
-queue.dequeue();
-console.log("After dequeue", queue);
+const lnQueue = new LNQueue();
+lnQueue.enqueue(1);
+lnQueue.enqueue(2);
+lnQueue.enqueue(3);
+console.log("After enqueue", lnQueue);
+lnQueue.dequeue();
+lnQueue.dequeue();
+console.log("After dequeue", lnQueue);
+
+class ArrQueue {
+  data: any[];
+
+  constructor() {
+    this.data = [];
+  }
+
+  peek() {
+    return this.data[this.data.length - 1];
+  }
+
+  enqueue(data: any) {
+    this.data.push(data);
+    return this;
+  }
+
+  dequeue() {
+    this.data.shift();
+    return this;
+  }
+}
+
+const arrQueue = new ArrQueue();
+arrQueue.enqueue(1);
+arrQueue.enqueue(2);
+arrQueue.enqueue(3);
+console.log("After enqueue", arrQueue);
+arrQueue.dequeue();
+arrQueue.dequeue();
+console.log("After dequeue", arrQueue);
