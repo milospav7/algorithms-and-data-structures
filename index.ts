@@ -450,6 +450,14 @@ class LNStackNode {
   }
 }
 
+// Top down direction when inserting new one, like this pop will be much faster because we will not need to perform lookup for next-to-the-last node, instead just remove top .next reference
+/**
+ *    3
+ *    |    .next on 3 refers to 2
+ *    2
+ *    |    .next on 2 refers to 1
+ *    1
+ */
 class LNStack {
   top: LNStackNode;
   bottom: LNStackNode;
@@ -461,14 +469,6 @@ class LNStack {
     this.size = 0;
   }
 
-  // Top down direction when inserting new one, like this pop will be much faster because we will not need to perform lookup for next-to-the-last node, instead just remove top .next reference
-  /**
-   *    3
-   *    |    .next on 3 refers to 2
-   *    2
-   *    |    .next on 2 refers to 1
-   *    1
-   */
   push(data: any) {
     const node = new LNStackNode(data);
     if (this.size === 0) {
