@@ -439,3 +439,68 @@ console.log(arrstack.push(2));
 console.log(arrstack.push(3));
 console.log(arrstack.pop());
 console.log(arrstack.peek());
+
+class LNStackNode {
+  data: any;
+  next: LNStackNode | null;
+
+  constructor(data: any, next = null) {
+    this.data = data;
+    this.next = next;
+  }
+}
+
+class LNStack {
+  top: LNStackNode;
+  bottom: LNStackNode;
+  size: number;
+
+  constructor() {
+    this.top = null;
+    this.bottom = null;
+    this.size = 0;
+  }
+
+  // Top down direction when inserting new one, like this pop will be much faster because we will not need to perform lookup for next-to-the-last node, instead just remove top .next reference
+  /**
+   *    3
+   *    |    .next on 3 refers to 2
+   *    2
+   *    |    .next on 2 refers to 1
+   *    1
+   */
+  push(data: any) {
+    const node = new LNStackNode(data);
+    if (this.size === 0) {
+      this.bottom = node;
+      this.top = node;
+    } else {
+      const holding = this.top;
+      this.top = node;
+      this.top.next = holding;
+    }
+    this.size++;
+    return this;
+  }
+
+  pop() {
+    if (this.size > 0) {
+      const nextToTop = this.top.next;
+      this.top = nextToTop;
+      this.size--;
+      return this;
+    }
+  }
+
+  peek() {
+    return this.top;
+  }
+}
+
+let lnStack = new LNStack();
+console.log(lnStack.push(1));
+console.log(lnStack.push(2));
+console.log(lnStack.push(3));
+console.log(lnStack.pop());
+console.log(lnStack.pop());
+console.log(lnStack.peek());
