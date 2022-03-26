@@ -405,3 +405,37 @@ console.log("After enqueue", arrQueue);
 arrQueue.dequeue();
 arrQueue.dequeue();
 console.log("After dequeue", arrQueue);
+
+// 19. Stack - FILO principle
+/**
+ * Linear data structure, same as queue
+ * Operations: push, pop, peek, lookup(not often used)
+ * The linked list versions have better worst-case behavior, but may have a worse overall runtime because of the number of allocations performed. The array versions are slower in the worst-case, but have better overall performance if the time per operation isn't too important
+ */
+class ArrayStack {
+  data: any[];
+  constructor() {
+    this.data = [];
+  }
+
+  push(record: any) {
+    this.data.push(record);
+    return this;
+  }
+
+  pop() {
+    this.data.pop();
+    return this;
+  }
+
+  peek() {
+    if (this.data.length > 0) return this.data[this.data.length - 1];
+  }
+}
+
+const arrstack = new ArrayStack();
+console.log(arrstack.push(1));
+console.log(arrstack.push(2));
+console.log(arrstack.push(3));
+console.log(arrstack.pop());
+console.log(arrstack.peek());
