@@ -553,6 +553,14 @@ class LinkedList {
     this.size++;
     return this;
   }
+
+  getFirst() {
+    return this.head;
+  }
+
+  getLast() {
+    return this.tail;
+  }
 }
 
 let lnList = new LinkedList();
