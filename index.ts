@@ -561,6 +561,35 @@ class LinkedList {
   getLast() {
     return this.tail;
   }
+
+  clear() {
+    this.head = null;
+    this.tail = null;
+    this.size = 0;
+    return this;
+  }
+
+  removeFirst() {
+    if (this.head) this.head = this.head.next;
+    return this;
+  }
+
+  removeLast() {
+    if (this.tail) {
+      let nextToLast = this.head;
+      let counter = 1;
+
+      while (counter < this.size - 1) {
+        nextToLast = nextToLast.next;
+        counter++;
+      }
+      nextToLast.next = null;
+      this.tail = nextToLast;
+
+      this.size--;
+      return this;
+    }
+  }
 }
 
 let lnList = new LinkedList();
@@ -569,3 +598,4 @@ console.log(lnList.insertFirst(2));
 console.log(lnList.insertFirst(3));
 console.log(lnList.insertLast(7));
 console.log(lnList.insertLast(8));
+console.log(lnList.removeLast());
