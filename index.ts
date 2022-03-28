@@ -504,3 +504,60 @@ console.log(lnStack.push(3));
 console.log(lnStack.pop());
 console.log(lnStack.pop());
 console.log(lnStack.peek());
+
+// 20. Linked list
+/**
+ * head and tail node
+ * prepend O(1), append O(1), lookup O(n), insert O(n), delete O(n)
+ * advantage over hassh tables is that element pointers are in some way ordered(sorted) since each points to next one while in hassh keys all are randomly scattered in memory
+ * linked lists can solve collision in hash tables (store values under same key in linked list)
+ */
+class LNNode {
+  data: any;
+  next: LNNode | null;
+
+  constructor(data: any, next = null) {
+    this.data = data;
+    this.next = next;
+  }
+}
+
+class LinkedList {
+  head: LNNode | null;
+  tail: LNNode;
+  size: number;
+
+  constructor() {
+    this.head = null;
+    this.tail = null;
+    this.size = 0;
+  }
+
+  insertFirst(data: any) {
+    const node = new LNNode(data, this.head);
+    this.head = node;
+    if (this.size === 0) this.tail = node;
+    this.size++;
+    return this;
+  }
+
+  insertLast(data: any) {
+    const node = new LNNode(data);
+    if (this.size === 0) {
+      this.head = node;
+      this.tail = node;
+    } else {
+      this.tail.next = node;
+      this.tail = node;
+    }
+    this.size++;
+    return this;
+  }
+}
+
+let lnList = new LinkedList();
+console.log(lnList.insertFirst(1));
+console.log(lnList.insertFirst(2));
+console.log(lnList.insertFirst(3));
+console.log(lnList.insertLast(7));
+console.log(lnList.insertLast(8));
