@@ -604,6 +604,7 @@ console.log(lnList.removeLast());
 
 function getMiddleNode(linkedList: LinkedList) {
   if (linkedList.size > 1) {
+    // Using slow-fast strategy
     let slow = linkedList.getFirst();
     let fast = linkedList.getFirst();
 
