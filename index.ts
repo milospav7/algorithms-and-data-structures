@@ -593,9 +593,28 @@ class LinkedList {
 }
 
 let lnList = new LinkedList();
-console.log(lnList.insertFirst(1));
-console.log(lnList.insertFirst(2));
-console.log(lnList.insertFirst(3));
-console.log(lnList.insertLast(7));
-console.log(lnList.insertLast(8));
+lnList.insertFirst(3);
+lnList.insertFirst(2);
+lnList.insertFirst(1);
+lnList.insertLast(4);
+lnList.insertLast(5);
+lnList.insertLast(6);
+lnList.insertLast(7);
 console.log(lnList.removeLast());
+
+function getMiddleNode(linkedList: LinkedList) {
+  if (linkedList.size > 1) {
+    let slow = linkedList.getFirst();
+    let fast = linkedList.getFirst();
+
+    while (fast.next && fast.next.next) {
+      slow = slow.next;
+      fast = fast.next.next;
+    }
+
+    return slow;
+  }
+  return linkedList.getFirst();
+}
+
+console.log(getMiddleNode(lnList));
