@@ -619,3 +619,18 @@ function getMiddleNode(linkedList: LinkedList) {
 }
 
 console.log(getMiddleNode(lnList));
+
+function isLinkedListCircular(linkedList: LinkedList) {
+  if (linkedList.size > 1) {
+    let slow = linkedList.getFirst();
+    let fast = linkedList.getFirst();
+
+    while (fast.next && fast.next.next) {
+      slow = slow.next;
+      fast = slow.next.next;
+      if (slow === fast) return true;
+    }
+    return false;
+  }
+  return false;
+}
