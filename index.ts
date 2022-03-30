@@ -634,3 +634,24 @@ function isLinkedListCircular(linkedList: LinkedList) {
   }
   return false;
 }
+
+function getNthNodeToLast(linkedList: LinkedList, n: number) {
+  if (linkedList.size > 1 && n < linkedList.size) {
+    let slow = linkedList.getFirst();
+    let fast = slow;
+    let counter = n;
+
+    while (counter > 0) {
+      fast = fast.next;
+      counter--;
+    }
+
+    while (fast.next) {
+      slow = slow.next;
+      fast = fast.next;
+    }
+
+    return slow;
+  }
+  return null;
+}
