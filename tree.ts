@@ -42,4 +42,23 @@ class Tree {
       fn(node);
     } while (nodes.length > 0);
   }
+
+  getLevelWidths() {
+    let levels = [0];
+    let nodes = [this.root, "x"];
+
+    while (nodes.length > 1) {
+      const node = nodes.shift();
+      if (typeof node !== "string") {
+        levels[levels.length - 1]++;
+        nodes.push(...node.children);
+      } else {
+        // It is 'x' - which represebts flag for level end
+        levels.push(0);
+        nodes.push("x"); // Put it back
+      }
+    }
+
+    return levels;
+  }
 }
