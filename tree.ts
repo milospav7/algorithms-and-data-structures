@@ -25,3 +25,21 @@ class TreeNode {
     return this;
   }
 }
+
+class Tree {
+  root: TreeNode;
+
+  constructor(data: any) {
+    this.root = new TreeNode(data);
+  }
+
+  traverseBSF(fn: Function) {
+    let nodes = [this.root];
+
+    do {
+      const node = nodes.shift();
+      if (node.children) nodes.push(...node.children);
+      fn(node);
+    } while (nodes.length > 0);
+  }
+}
