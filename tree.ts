@@ -87,3 +87,27 @@ class BSTNode {
     }
   }
 }
+
+class BSTree {
+  root: BSTNode;
+
+  constructor(data: any) {
+    this.root = new BSTNode(data);
+  }
+}
+
+function isTreeBSTree(
+  node: BSTNode, // should be generic type(instead of BST node) with left/right properties
+  parentOfLeftNode: BSTNode | null = null,
+  parentOfRightNode: BSTNode | null = null
+) {
+  if (parentOfLeftNode && parentOfLeftNode.data > node.data) return false;
+  if (parentOfRightNode && parentOfRightNode.data < node.data) return false;
+  
+  if (!parentOfLeftNode && node.left)
+    return isTreeBSTree(node.left, node, parentOfRightNode);
+  if (!parentOfRightNode && node.right)
+    return isTreeBSTree(node.right, parentOfLeftNode, node);
+
+  return true;
+}
