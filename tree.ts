@@ -78,12 +78,16 @@ class BSTNode {
   insert(data: any) {
     if (data < this.data) {
       if (this.left) this.left.insert(data);
-      const node = new BSTNode(data);
-      this.left = node;
+      else {
+        const node = new BSTNode(data);
+        this.left = node;
+      }
     } else if (data > this.data) {
       if (this.right) this.right.insert(data);
-      const node = new BSTNode(data);
-      this.right = node;
+      else {
+        const node = new BSTNode(data);
+        this.right = node;
+      }
     }
   }
 }
@@ -101,13 +105,21 @@ function isTreeBSTree(
   parentOfLeftNode: BSTNode | null = null,
   parentOfRightNode: BSTNode | null = null
 ) {
-  if (parentOfLeftNode && parentOfLeftNode.data > node.data) return false;
-  if (parentOfRightNode && parentOfRightNode.data < node.data) return false;
-  
-  if (!parentOfLeftNode && node.left)
-    return isTreeBSTree(node.left, node, parentOfRightNode);
-  if (!parentOfRightNode && node.right)
-    return isTreeBSTree(node.right, parentOfLeftNode, node);
+  if (parentOfLeftNode && parentOfLeftNode.data < node.data) return false;
+  if (parentOfRightNode && parentOfRightNode.data > node.data) return false;
+
+  if (node.left && !isTreeBSTree(node.left, node, parentOfRightNode))
+    return false;
+  if (node.right && !isTreeBSTree(node.right, parentOfLeftNode, node))
+    return false;
 
   return true;
 }
+
+const node = new BSTNode(5);
+node.insert(4);
+node.insert(3);
+node.insert(6);
+node.insert(7);
+console.log(node);
+console.log(isTreeBSTree(node));
