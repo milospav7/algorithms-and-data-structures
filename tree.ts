@@ -62,3 +62,28 @@ class Tree {
     return levels;
   }
 }
+
+// Binary search tree
+class BSTNode {
+  data: any;
+  left: BSTNode | null;
+  right: BSTNode | null;
+
+  constructor(data: any) {
+    this.data = data;
+    this.left = null;
+    this.right = null;
+  }
+
+  insert(data: any) {
+    if (data < this.data) {
+      if (this.left) this.left.insert(data);
+      const node = new BSTNode(data);
+      this.left = node;
+    } else if (data > this.data) {
+      if (this.right) this.right.insert(data);
+      const node = new BSTNode(data);
+      this.right = node;
+    }
+  }
+}
