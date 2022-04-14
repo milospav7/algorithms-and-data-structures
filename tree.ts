@@ -90,6 +90,16 @@ class BSTNode {
       }
     }
   }
+
+  findNode(data: any) {
+    if (data === this.data) return this;
+
+    // Power of O(log n)
+    if (this.right && data > this.data) return this.findNode(this.right.data);
+    if (this.left && data < this.data) return this.findNode(this.left.data);
+
+    return null;
+  }
 }
 
 class BSTree {
@@ -108,6 +118,7 @@ function isTreeBSTree(
   if (parentOfLeftNode && parentOfLeftNode.data < node.data) return false;
   if (parentOfRightNode && parentOfRightNode.data > node.data) return false;
 
+  // We must traverse whole tree(thats why we check inside both if statements - searhing for unbalanced subtree on each side)
   if (node.left && !isTreeBSTree(node.left, node, parentOfRightNode))
     return false;
   if (node.right && !isTreeBSTree(node.right, parentOfLeftNode, node))
